@@ -1,6 +1,7 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { useColorScheme } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Colors } from '@/constants/theme';
 
@@ -19,6 +20,11 @@ const TAB_CONFIG: { name: string; title: string; icon: IoniconName; activeIcon: 
 export default function AppTabs() {
   const scheme = useColorScheme();
   const colors = Colors[scheme === 'unspecified' || scheme == null ? 'dark' : scheme];
+  // Bottom inset adapts automatically to the device navigation mode:
+  // - Gesture navigation: small inset (~16-24px)
+  // - 3-button navigation: larger inset (~48px)
+  const insets = useSafeAreaInsets();
+  const tabBarContentHeight = 60;
 
   return (
     <Tabs
@@ -30,8 +36,8 @@ export default function AppTabs() {
           backgroundColor: colors.backgroundElement,
           borderTopWidth: 1,
           borderTopColor: colors.border,
-          height: 60,
-          paddingBottom: 8,
+          height: tabBarContentHeight + insets.bottom,
+          paddingBottom: 8 + insets.bottom,
           paddingTop: 6,
         },
         tabBarLabelStyle: {

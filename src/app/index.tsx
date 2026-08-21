@@ -1,9 +1,8 @@
-import React from 'react';
-import { View, StyleSheet, ScrollView, Pressable, useColorScheme } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import { Pressable, ScrollView, StyleSheet, useColorScheme, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -14,7 +13,7 @@ import { useTheme } from '@/hooks/use-theme';
 export default function HomeScreen() {
   const { balance, transactions, savingsGoals } = useFinanceData();
   const theme = useTheme();
-  const scheme = useColorScheme() ?? 'dark';
+  const scheme = useColorScheme() === 'light' ? 'light' : 'dark';
   const isDark = scheme === 'dark';
 
   const quickActions = [
@@ -229,6 +228,7 @@ const styles = StyleSheet.create({
   },
   balanceAmount: {
     fontSize: 40,
+    lineHeight: 48,
     fontWeight: '800',
     letterSpacing: -1,
     color: '#FFFFFF',

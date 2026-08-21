@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Pressable, Platform, Modal } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import { useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -110,8 +110,8 @@ export default function TransferScreen() {
             {errorMsg
               ? <ThemedText style={styles.errorMsg}>{errorMsg}</ThemedText>
               : selectedContact
-              ? <ThemedText style={styles.recipientNote}>→ {selectedContact}</ThemedText>
-              : <ThemedText style={styles.recipientHint}>Select a recipient above</ThemedText>
+                ? <ThemedText style={styles.recipientNote}>→ {selectedContact}</ThemedText>
+                : <ThemedText style={styles.recipientHint}>Select a recipient above</ThemedText>
             }
           </LinearGradient>
 
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
 
   amountCard: { borderRadius: 24, padding: Spacing.four, alignItems: 'center', gap: 8 },
   amountLabel: { fontSize: 11, fontWeight: '700', letterSpacing: 2, color: 'rgba(255,255,255,0.5)' },
-  amountDisplay: { fontSize: 44, fontWeight: '800', color: '#fff', letterSpacing: -1 },
+  amountDisplay: { fontSize: 44, lineHeight: 52, fontWeight: '800', color: '#fff', letterSpacing: -1 },
   errorMsg: { color: '#EF4444', fontSize: 13, fontWeight: '700' },
   recipientNote: { fontSize: 14, fontWeight: '600', color: 'rgba(255,255,255,0.6)' },
   recipientHint: { fontSize: 13, fontWeight: '500', color: 'rgba(255,255,255,0.35)' },

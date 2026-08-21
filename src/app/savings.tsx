@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Pressable, TextInput, Modal } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, MaxContentWidth, Radii, Spacing } from '@/constants/theme';
-import { useFinanceData, SavingsGoal } from '@/hooks/use-finance-data';
+import { SavingsGoal, useFinanceData } from '@/hooks/use-finance-data';
 import { useTheme } from '@/hooks/use-theme';
 
 const GOAL_COLORS = ['#818CF8', '#22C55E', '#F59E0B', '#EF4444', '#06B6D4', '#EC4899'];
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   decorCircle: { position: 'absolute', borderRadius: 9999, backgroundColor: 'rgba(255,255,255,0.05)' },
   overviewRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   overviewLabel: { fontSize: 11, color: 'rgba(255,255,255,0.55)', fontWeight: '600', marginBottom: 4, letterSpacing: 1 },
-  overviewValue: { fontSize: 24, fontWeight: '800', color: '#fff' },
+  overviewValue: { fontSize: 24, lineHeight: 30, fontWeight: '800', color: '#fff' },
   overviewDivider: { width: 1, height: 40, backgroundColor: 'rgba(255,255,255,0.15)' },
   overviewProgress: { gap: 8 },
   overviewTrack: { height: 6, backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 3, overflow: 'hidden' },

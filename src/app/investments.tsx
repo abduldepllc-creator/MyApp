@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Pressable, TextInput, Modal, useColorScheme } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, TextInput, useColorScheme, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -13,7 +13,7 @@ import { useTheme } from '@/hooks/use-theme';
 export default function InvestmentsScreen() {
   const { holdings, balance, buyAsset, sellAsset } = useFinanceData();
   const theme = useTheme();
-  const scheme = useColorScheme() ?? 'dark';
+  const scheme = useColorScheme() === 'light' ? 'light' : 'dark';
   const [filterType, setFilterType] = useState<'all' | 'crypto' | 'stock'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAsset, setSelectedAsset] = useState<any | null>(null);
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   dc1: { width: 200, height: 200, top: -80, right: -50 },
   dc2: { width: 130, height: 130, top: 20, right: 80 },
   portfolioLabel: { fontSize: 11, fontWeight: '700', letterSpacing: 1.8, color: 'rgba(255,255,255,0.6)' },
-  portfolioValue: { fontSize: 38, fontWeight: '800', letterSpacing: -1, color: '#fff' },
+  portfolioValue: { fontSize: 38, lineHeight: 46, fontWeight: '800', letterSpacing: -1, color: '#fff' },
   portfolioMeta: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 },
   metaLabel: { fontSize: 11, color: 'rgba(255,255,255,0.55)', fontWeight: '600', marginBottom: 2 },
   metaValue: { fontSize: 15, fontWeight: '700', color: '#fff' },

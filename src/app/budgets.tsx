@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Pressable, TextInput, Modal } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from 'react';
+import { Modal, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, MaxContentWidth, Radii, Spacing } from '@/constants/theme';
-import { useFinanceData, Budget } from '@/hooks/use-finance-data';
+import { Budget, useFinanceData } from '@/hooks/use-finance-data';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function BudgetsScreen() {
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   overviewCard: { borderRadius: 24, padding: Spacing.four, gap: Spacing.three, overflow: 'hidden' },
   overviewTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   ovLabel: { fontSize: 10, letterSpacing: 1.5, color: 'rgba(255,255,255,0.55)', fontWeight: '700', marginBottom: 4 },
-  ovSpent: { fontSize: 26, fontWeight: '800', color: '#fff' },
+  ovSpent: { fontSize: 26, lineHeight: 32, fontWeight: '800', color: '#fff' },
   ovTotal: { fontSize: 18, fontWeight: '700', color: 'rgba(255,255,255,0.75)' },
   ovTrack: { height: 8, backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 4, overflow: 'hidden' },
   ovFill: { height: '100%', borderRadius: 4, minWidth: 8 },
