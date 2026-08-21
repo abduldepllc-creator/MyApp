@@ -1,8 +1,8 @@
 import { Image } from 'expo-image';
-import { SymbolView } from 'expo-symbols';
+import { Ionicons } from '@expo/vector-icons';
 import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ExternalLink } from '@/components/external-link';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -12,51 +12,30 @@ import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function TabTwoScreen() {
-  const safeAreaInsets = useSafeAreaInsets();
-  const insets = {
-    ...safeAreaInsets,
-    bottom: safeAreaInsets.bottom + BottomTabInset + Spacing.three,
-  };
   const theme = useTheme();
 
-  const contentPlatformStyle = Platform.select({
-    android: {
-      paddingTop: insets.top,
-      paddingLeft: insets.left,
-      paddingRight: insets.right,
-      paddingBottom: insets.bottom,
-    },
-    web: {
-      paddingTop: Spacing.six,
-      paddingBottom: Spacing.four,
-    },
-  });
-
   return (
-    <ScrollView
-      style={[styles.scrollView, { backgroundColor: theme.background }]}
-      contentInset={insets}
-      contentContainerStyle={[styles.contentContainer, contentPlatformStyle]}>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.titleContainer}>
-          <ThemedText type="subtitle">Explore</ThemedText>
-          <ThemedText style={styles.centerText} themeColor="textSecondary">
-            This starter app includes example{'\n'}code to help you get started.
-          </ThemedText>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }} edges={['top', 'left', 'right']}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}>
+        <ThemedView style={styles.container}>
+          <ThemedView style={styles.titleContainer}>
+            <ThemedText type="subtitle" style={styles.headerTitle}>Explore</ThemedText>
+            <ThemedText style={styles.centerText} themeColor="textSecondary">
+              This starter app includes example{'\n'}code to help you get started.
+            </ThemedText>
 
-          <ExternalLink href="https://docs.expo.dev" asChild>
-            <Pressable style={({ pressed }) => pressed && styles.pressed}>
-              <ThemedView type="backgroundElement" style={styles.linkButton}>
-                <ThemedText type="link">Expo documentation</ThemedText>
-                <SymbolView
-                  tintColor={theme.text}
-                  name={{ ios: 'arrow.up.right.square', android: 'link', web: 'link' }}
-                  size={12}
-                />
-              </ThemedView>
-            </Pressable>
-          </ExternalLink>
-        </ThemedView>
+            <ExternalLink href="https://docs.expo.dev" asChild>
+              <Pressable style={({ pressed }) => pressed && styles.pressed}>
+                <ThemedView type="backgroundElement" style={styles.linkButton}>
+                  <ThemedText type="link">Expo documentation</ThemedText>
+                  <Ionicons name="open-outline" size={12} color={theme.text} />
+                </ThemedView>
+              </Pressable>
+            </ExternalLink>
+          </ThemedView>
 
         <ThemedView style={styles.sectionsWrapper}>
           <Collapsible title="File-based routing">
@@ -122,6 +101,7 @@ export default function TabTwoScreen() {
         {Platform.OS === 'web' && <WebBadge />}
       </ThemedView>
     </ScrollView>
+   </SafeAreaView>
   );
 }
 
@@ -142,6 +122,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Spacing.four,
     paddingVertical: Spacing.six,
+  },
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    marginBottom: Spacing.three,
   },
   centerText: {
     textAlign: 'center',

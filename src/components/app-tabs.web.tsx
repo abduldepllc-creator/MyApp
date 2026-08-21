@@ -21,11 +21,26 @@ export default function AppTabs() {
       <TabSlot style={{ height: '100%' }} />
       <TabList asChild>
         <CustomTabList>
-          <TabTrigger name="home" href="/" asChild>
+          <TabTrigger name="index" href={"/" as any} asChild>
             <TabButton>Home</TabButton>
           </TabTrigger>
-          <TabTrigger name="explore" href="/explore" asChild>
-            <TabButton>Explore</TabButton>
+          <TabTrigger name="analytics" href={"/analytics" as any} asChild>
+            <TabButton>Analytics</TabButton>
+          </TabTrigger>
+          <TabTrigger name="investments" href={"/investments" as any} asChild>
+            <TabButton>Market</TabButton>
+          </TabTrigger>
+          <TabTrigger name="savings" href={"/savings" as any} asChild>
+            <TabButton>Savings</TabButton>
+          </TabTrigger>
+          <TabTrigger name="budgets" href={"/budgets" as any} asChild>
+            <TabButton>Budgets</TabButton>
+          </TabTrigger>
+          <TabTrigger name="transfer" href={"/transfer" as any} asChild>
+            <TabButton>Transfer</TabButton>
+          </TabTrigger>
+          <TabTrigger name="profile" href={"/profile" as any} asChild>
+            <TabButton>Profile</TabButton>
           </TabTrigger>
         </CustomTabList>
       </TabList>
@@ -55,7 +70,7 @@ export function CustomTabList(props: TabListProps) {
     <View {...props} style={styles.tabListContainer}>
       <ThemedView type="backgroundElement" style={styles.innerContainer}>
         <ThemedText type="smallBold" style={styles.brandText}>
-          Expo Starter
+          Wealthify
         </ThemedText>
 
         {props.children}
